@@ -1,4 +1,5 @@
-import { styled, Button } from '@twilio/flex-ui';
+import { Button } from '@twilio/flex-ui';
+import styled from '@emotion/styled';
 
 const StyledButton = styled(Button)`
   background-color: turquoise;
