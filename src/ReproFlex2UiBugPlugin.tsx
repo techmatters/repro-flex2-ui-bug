@@ -4,6 +4,7 @@ import { FlexPlugin } from '@twilio/flex-plugin';
 
 import CustomTaskList from './components/CustomTaskList/CustomTaskList';
 import TestButtonBase from './components/TestButtonBase/TestButtonBase';
+import TestStyledButton from './components/TestStyledButton/TestStyledButton';
 
 const PLUGIN_NAME = 'ReproFlex2UiBugPlugin';
 
@@ -21,6 +22,7 @@ export default class ReproFlex2UiBugPlugin extends FlexPlugin {
   async init(flex: typeof Flex, manager: Flex.Manager): Promise<void> {
     const options: Flex.ContentFragmentProps = { sortOrder: -1 };
     flex.AgentDesktopView.Panel1.Content.add(<CustomTaskList key="ReproFlex2UiBugPlugin-component" />, options);
-    flex.AgentDesktopView.Panel1.Content.add(<TestButtonBase key="ReproFlex2UiBugPlugin-component2" />, options);
+    flex.TaskList.Content.add(<TestButtonBase key="ReproFlex2UiBugPlugin-TestButtonBase" />, options);
+    flex.TaskList.Content.add(<TestStyledButton key="ReproFlex2UiBugPlugin-TestStyledButton" />, options);
   }
 }

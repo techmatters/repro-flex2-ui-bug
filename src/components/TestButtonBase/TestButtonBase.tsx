@@ -1,12 +1,12 @@
 import React from 'react'
-import { ButtonBase } from '@material-ui/core';
-import { styled } from '@twilio/flex-ui';
+import { ButtonBase, withStyles } from '@material-ui/core';
 
-const StyledButton = styled(ButtonBase)`
-  background-color: red;
-  height: 40px;
-  width: 200px;
-`;
+const StyledButton = withStyles({
+  root: {
+    width: 200,
+    height: 40,
+  },
+})(ButtonBase);
 
 const TestButtonBase = () => <StyledButton onClick={() => console.log('Clicked!')}>Some button</StyledButton>
 
