@@ -1,7 +1,7 @@
 import { styled, Button } from '@twilio/flex-ui';
 
 const StyledButton = styled(Button)`
-  backgorund-color: turquoise;
+  background-color: turquoise;
   width: 200px;
 `;
 
