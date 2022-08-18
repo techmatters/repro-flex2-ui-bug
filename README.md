@@ -12,9 +12,10 @@ and adding two components to the plugin: `src/components/TestStyledButton` and `
 Images are provided in the linked PRs to better understand the issue.
 
 
-## Running the project
+## Reproducing the issue
 
-Assuming you have followed the [setup instructions of the Flex docs](https://www.twilio.com/docs/flex/quickstart/getting-started-plugin#prerequisites):
+Assuming you have followed the [setup instructions of the Flex docs](https://www.twilio.com/docs/flex/quickstart/getting-started-plugin#prerequisites) and you are in a good place to run Flex plugins locally:
+- Clone the repo.
 - Create a `public/appConfig.js` that points to an account sid with Flex v2
 ```
 const appConfig = {
@@ -28,5 +29,13 @@ const appConfig = {
   logLevel: 'info',
 };
 ```
--  Run `npm install`
--  Run `npm start`
+- Run `npm install`.
+- `git checkout main`.
+- Run `npm start`.
+- Once the Flex is running with the plugin, send a task and check that the styles looks like the "before" screenshots attached in the PRs [#1](https://github.com/techmatters/repro-flex2-ui-bug/pull/1) and [#2](https://github.com/techmatters/repro-flex2-ui-bug/pull/2).
+- `git checkout fix-styled`.
+- Send another task and check that the styles looks like the "after" in [#1](https://github.com/techmatters/repro-flex2-ui-bug/pull/1).
+- `git checkout fix-flex_buttons`.
+- Send another task and check that the styles looks like the "after" in [#2](https://github.com/techmatters/repro-flex2-ui-bug/pull/2).
+
+Another thing that is worth checking, is in Chome Console -> Elements, inspect the page and see that in `main` branch, within the `<head>` tag some MUI `<style>` tags are repeated, but they are not in `fix-flex_buttons` branch. This is possibly related or similar to [this issue](https://github.com/mui/material-ui/issues/15610).
