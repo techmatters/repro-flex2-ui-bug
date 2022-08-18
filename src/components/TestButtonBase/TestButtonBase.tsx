@@ -1,5 +1,8 @@
 import React from 'react'
-import { ButtonBase, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
+
+// Dummy replacement to avoid importing this component from @material-ui/core
+const ButtonBase: React.FC<any> = props => <button {...props}>{props.children}</button>
 
 const StyledButton = withStyles({
   root: {
