@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Flex from '@twilio/flex-ui';
 import { FlexPlugin } from '@twilio/flex-plugin';
+import { StylesProvider, createGenerateClassName } from '@material-ui/core';
 
 import CustomTaskList from './components/CustomTaskList/CustomTaskList';
 import TestButtonBase from './components/TestButtonBase/TestButtonBase';
@@ -20,6 +21,20 @@ export default class ReproFlex2UiBugPlugin extends FlexPlugin {
    * @param flex { typeof Flex }
    */
   async init(flex: typeof Flex, manager: Flex.Manager): Promise<void> {
+    Flex.setProviders({
+      CustomProvider: (RootComponent) => (props) => {
+          return (
+            <StylesProvider generateClassName={createGenerateClassName({
+              productionPrefix: 'pluginXYZ',
+              seed: 'pluginXYZ',
+              // disableGlobal: true
+            })}>
+                  <RootComponent {...props} />
+              </StylesProvider>
+          );
+      }
+    });
+
     const options: Flex.ContentFragmentProps = { sortOrder: -1 };
     flex.AgentDesktopView.Panel1.Content.add(<CustomTaskList key="ReproFlex2UiBugPlugin-component" />, options);
     flex.TaskList.Content.add(<TestButtonBase key="ReproFlex2UiBugPlugin-TestButtonBase" />, options);
